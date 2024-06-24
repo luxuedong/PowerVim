@@ -236,9 +236,9 @@ autocmd filetype python nnoremap <F1> :w <bar> exec '!python '.shellescape('%')<
 autocmd filetype cpp nnoremap <F1> :w <bar> exec '!g++ --std=c++11 -pthread '.shellescape('%').' -o ./bin/'.shellescape('%:r').' && ./bin/'.shellescape('%:r')<CR>
 " autocmd filetype dot nnoremap <F1> :w <bar> exec '!dot -Tsvg '.shellescape('%').' > ./svg/'.shellescape('%:r').' && open ./bin/'.shellescape('%:r')<CR>
 autocmd filetype dot nnoremap <F1> :w <bar> exec '!dot -Tsvg sqlparse.dot > sqlparse.svg'<CR>
-autocmd Filetype java nnoremap <F1> :w <bar> exec '!javac '.shellescape('%'). ' -d ./bin'<CR>
+" autocmd Filetype java nnoremap <F1> :w <bar> exec '!mkdir -p ./bin && !javac '.shellescape('%'). ' -d ./bin'<CR>
+autocmd Filetype java nnoremap <F1> :w<CR>:call system('mkdir -p ./bin && javac '.shellescape(expand('%')).' -d ./bin')<CR>
 autocmd filetype java nnoremap <F2> :w <bar> exec '!java -cp ./bin '.shellescape('%:r')<CR>
-
 
 let g:tlist_markdown_settings = 'markdown;h:Headlins'
 "新建.c,.h,.sh,.Java文件，自动插入文件头
